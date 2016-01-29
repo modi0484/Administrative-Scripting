@@ -1,10 +1,9 @@
 #!/bin/bash
 # this script displays how many files are in Picture directory
 # how much space they used
-# and the sizes and name
+# and the sizes and name the three largest files
 
-echo -n "There are"
-find ~/Pictures -type f | wc -l 
+echo -n There are  `find ~/Pictures -type f | wc -l`
 echo "files in Pictures directory"
 echo " The Pictures directory uses(In KBytes):"
 du -sk ~/Pictures
