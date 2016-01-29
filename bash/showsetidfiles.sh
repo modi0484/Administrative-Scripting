@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# This script displays setidfiles
+# This script displays setidfilesbash
 
-echo "Find all SUID files:"
+echo "Display all SUID files:"
 
 find /usr -perm -4000 -print
 
-echo "Find all SGID files:"
+echo "Display all SGID files:"
 
 find /usr -perm -2000 -print 

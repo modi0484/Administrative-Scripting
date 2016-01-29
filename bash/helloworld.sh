@@ -1,4 +1,4 @@
 #!/bin/bash
-# Hello world script
+#  This script dispays Hello world 
 
 echo "Hello World!"

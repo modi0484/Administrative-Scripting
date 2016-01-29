@@ -1,4 +1,4 @@
 #!/bin/bash
-# This script display process id counts
+# This script displays my process id 
 
 echo $$
