@@ -2,4 +2,4 @@
 # This script is for backup of bin directory
 
 cd ~
-rsync -av bin/. backups/
+rsync -avHAXS bin backups
