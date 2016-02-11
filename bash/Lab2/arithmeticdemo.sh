@@ -2,11 +2,16 @@
 #This script asks user for two numbers and 
 #performs five arithmetc operations with given two numbers
 
-read -p "Give me a first number : " num1
-read -p "Give me a second number : " num2
+read -p "Enter a number " firstnum
+read -p "Enter a second number " secondnum
 
-echo "Addition(+) of these two numbers is $((num1 + num2))"
-echo "Mupltiplication(*) of these two numbers is $((num1 * num2))"
-echo "Difference(-) of these two numbers is $((num1 - num2))"
-echo "Dividend(/) of these two numbers is $((num1 / num2))"
-echo "Reminder(%) of these two numbers is $((num1 % num2))"
+total=$((firstnum + secondnum))
+echo "$firstnum + $secondnum equals $total"
+total=$((firstnum - secondnum))
+echo "$firstnum - $secondnum equals $total"
+total=$((firstnum * secondnum))
+echo "$firstnum * $secondnum equals $total"
+total=$((firstnum / secondnum))
+echo "$firstnum / $secondnum equals $total"
+remainder=$((firstnum % secondnum))
+echo "$firstnum modulus $secondnum equals $remainder"
