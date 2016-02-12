@@ -1,29 +1,26 @@
 #!/bin/bash
+# this script enumerates our 2 interfaces and
+#   displays their configured IPV4 addresses
+#   as well as default route information
 
-# this script will show the IP address assigned to each interface as well as the default gateway
+# Get an array of our interface names, we will have at least 2
+interfaces=(`ifconfig |grep '^[A-Za-z]'|awk '{print $1}'`)
 
+# this was for debugging purposes
+#echo "Our interfaces include ${interfaces[@]}"
 
-declare -a int1
-declare -a int2
-declare -a interfaces
+# For the first interface in the array, get the IP address and
+#    save it to an array for IP addresses
+ip[0]=`ifconfig ${interfaces[0]}|grep "inet "|sed -e 's/.*inet addr://' -e 's/ .*//'`
 
-#Dispays the Interfaces names
-int1=`ifconfig | grep -ow "eth0"`
-int2=`ifconfig | grep -ow "lo"`
-echo "There are two interfaces: [$int1] and [$int2]"
+# For the second interface in the array, get the IP address and
+#    save it to the array for IP addresses
+ip[1]=`ifconfig ${interfaces[1]}|grep "inet "|sed -e 's/.*inet addr://' -e 's/ .*//'`
 
-#assign list of interface names to interfaces[]
-for i in `ifconfig | expand | cut -c 1-8 | sort | uniq -u | grep -v lo`; do
-	interfaces+=($i)
-done
+# Get default route gateway IP from the route command
+gwip=`route -n|grep '^0.0.0.0'|awk '{print $2}'`
 
-
-#parse ifconfig output for each interface defined in interfaces[] and output the assosicated IPv4 address
-for i in ${interfaces[@]}; do
-	addr=`ifconfig $i | grep "inet addr" | cut -d: -f2 | cut -d' ' -f1`
-	echo "Interface [$i] has an IPv4 address of $addr"
-done
-
-#parse the route -n command to retrieve and display the default gateway
-gw=`route -n | grep ^0.0.0.0 | awk '{print $2}'`
-echo "The IPv4 default gateway is $gw"
+# Display the information we have gathered
+echo "${interfaces[0]} has address ${ip[0]}"
+echo "${interfaces[1]} has address ${ip[1]}"
+echo "Our default route is through $gwip"
