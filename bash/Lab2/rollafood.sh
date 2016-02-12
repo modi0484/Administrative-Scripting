@@ -1,5 +1,5 @@
 #!/bin/bash
-#rollafood script
+#This script picks random numbers from 1 to 6 then add them up and result will shows index of food in food array.
 
 food=("pizza" "burger" "frankie" "hotdog" "sandwich" "omlet" "bagels" "beans" "burito" "spaghetti" "gujarati dhokla")
 
