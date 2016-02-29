@@ -67,19 +67,19 @@ done
 df=`route -n|grep '^0.0.0.0'|awk '{print $2}'`
 
 # now use all collected information below
-if [ ${#interfaces[@]} -gt 0 ]; then # use specified interface list if we have one
-    for interface in ${interfaces[@]}; do # iterate over interface names requested
-        if [ ${ipaddress[$interface]} ]; then # only display info for an interface if we have some
-            echo "$interface has address ${ipaddress[$interface]}"
-        else # for invalid interface names or interfaces with no address, just let the user know about it
+if [ ${#interfaces[@]} -gt 0 ]; then # checking of particular interface
+    for interface in ${interfaces[@]}; do 
+        if [ ${ipaddress[$interface]} ]; then # print only interface information
+            echo "$interface : ${ipaddress[$interface]}"
+        else # This is for wrong interface information
             echo "$interface is not an interface on this host or has no ip address assigned"
         fi
     done
 else
-    for interface in ${intarray[@]}; do # if no interfaces specified, display them all
-        echo "$interface has address ${ipaddress[$interface]}"
+    for interface in ${intarray[@]}; do # print all interface if no particuar interface specified
+        echo "$interface : ${ipaddress[$interface]}"
     done
 fi
 
-# display the default route gateway if we were given -r or --route on the command line
-[ $defaultr -eq 1 ] && echo "The default route is through $gf"
+# prints the default route gateway if we were given -r or --route on the command line
+[ $defaultr -eq 1 ] && echo "The default route gateway is $gf"
