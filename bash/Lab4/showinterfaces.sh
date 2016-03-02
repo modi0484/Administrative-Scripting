@@ -39,7 +39,7 @@ errormessage(){
 ###### MAIN SCRIPT ################
 ##############################
 
-#Checking for name of interfaces and default gateway from command line options
+#Checking for name of interfaces and default gateway from command line arguments
 
 while [ $# -gt 0 ]; do
     case "$1" in
