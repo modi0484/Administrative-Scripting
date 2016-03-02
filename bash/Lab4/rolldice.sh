@@ -1,24 +1,24 @@
 #!/bin/bash
+
+# Akash Modi (200301572)
+
 # This script will ask user a number between 1 to 5(default count will be 2)
 # It will aslo ask user for count of number of dice as well as number of sides
 # And finally It will print the result of rolling dice to the user
 
-###########################################################################################
 
-# Variables Declaration
+
+####### Variables Declaration ##########
 #################################################
 
- # By deafult Variable $dicecount=2
- # By default Variable $dicesides=6
-
-
-
+# By deafult Variable $dicecount=2
+# By default Variable $dicesides=6
 # At the beginning the toltal rolls will be 0
 total=0
 
-###########################################################################################
 
-# create a fuction userhelp for user for command help
+
+######### create a function userhelp for user for command help ############
 ##################################################
 userhelp () {
   echo "Usage: $0 [-c] [-s] [-h]"
@@ -29,11 +29,11 @@ userhelp () {
     echo " -h option is for help, --help "
 }
 
-###########################################################################################
 
 
-# MAIN SCRIPT#
-#############
+
+########### MAIN SCRIPT ##############
+##############################################
 
 # here is while loop for checking the dicecount, dicesides from commaand line option and also dispay command help option
 

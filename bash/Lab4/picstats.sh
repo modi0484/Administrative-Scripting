@@ -1,12 +1,16 @@
 #!/bin/bash
+
+# Akash Modi (200301572)
+
 # This script will display default directory ~/Pictures
 # Disk usage by Pictures directory and also display  3 biggest files in ~/Pictures directory
 
-#Variable Declaration
-##############################
+####### Variable Declaration ################
+###########################################
 defaultdir=~/Pictures # set ~/Picture directory to default directory
 
-# create a fuction userhelp for user for command help
+############ create a fuction userhelp for user for command help ############
+####################################################
 userhelp(){
   echo "Usage: $0 [-c] [-h] [directory_name]"
   echo "FYI: default directory is ~/Picture"
@@ -17,7 +21,7 @@ userhelp(){
   echo " -h option is for help, --help "
 }
 
-# create a fuction error-message for send error to stderr
+############# create a fuction error-message for send error to stderr #################
 ######################################################
 errormessage(){
         echo "Usage: $0 [-c] [-h] [directory_name]"
@@ -25,8 +29,8 @@ errormessage(){
 }
 
 
-# MAIN SCRIPT#
-#############
+################ MAIN SCRIPT #############
+###############################################
 
 # following is a while loop which check files count in mention drectory and help option from command line options
 

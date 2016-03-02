@@ -1,9 +1,12 @@
 #!/bin/bash
+
+# Akash Modi (200301572)
+
 # This script will fetch and display only interfacenames and its IP4 addresses
 # It will also dispaly default route information
 
-# variables declarations
-###########
+####### Variables Declaration ##########
+#################################################
 defaultr=0 # assign default route count to 0
  # Ip Adresses of belonging interfaces
 declare -A ipaddress
@@ -14,7 +17,7 @@ declare -a interfaces
 # An array of interfaces name which are found
 declare -a intarray 
 
-# create a fuction help for user for command help
+############ create a fuction userhelp for user for command help ###############
 ##################################################
 userhelp(){
   echo "Usage: $0 [-r] [-h] [interface_name]"
@@ -25,7 +28,7 @@ userhelp(){
   echo " -h option is for help, --help "
 }
 
-# create a fuction error-message for send error to stderr
+############ create a fuction error-message for send error to stderr #############
 ######################################################
 errormessage(){
         echo "Usage: $0 [-r] [-h] [interface_name]"
@@ -33,8 +36,8 @@ errormessage(){
 }
 
 
-# MAIN SCRIPT#
-#############
+###### MAIN SCRIPT ################
+##############################
 
 #Checking for name of interfaces and default gateway from command line options
 
