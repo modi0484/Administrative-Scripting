@@ -18,7 +18,7 @@ total=0
 
 ###########################################################################################
 
-# create a fuction help for user for command help
+# create a fuction userhelp for user for command help
 ##################################################
 userhelp () {
   echo "Usage: $0 [-c] [-s] [-h]"

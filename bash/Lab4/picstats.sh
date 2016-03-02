@@ -6,7 +6,7 @@
 ##############################
 defaultdir=~/Pictures # set ~/Picture directory to default directory
 
-# create a fuction help for user for command help
+# create a fuction userhelp for user for command help
 userhelp(){
   echo "Usage: $0 [-c] [-h] [directory_name]"
   echo "FYI: default directory is ~/Picture"
