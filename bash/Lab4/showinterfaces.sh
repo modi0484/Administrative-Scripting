@@ -16,8 +16,8 @@ declare -a intarray
 
 # create a fuction help for user for command help
 ##################################################
-function help {
-  echo "Usage: $0 [-r] [-h]"
+userhelp(){
+  echo "Usage: $0 [-r] [-h] [interface_name]"
   
   echo "options : "
   
@@ -26,28 +26,41 @@ function help {
 }
 
 # create a fuction error-message for send error to stderr
-function errormessage {
-        echo "Usage: $0 [-d level] [-h]"
+######################################################
+errormessage(){
+        echo "Usage: $0 [-r] [-h] [interface_name]"
 		echo "Argument '$1' not recognized" >&2
 }
 
-#######
-#MAIN SCRIPT
-############
 
-#Checking for name of interfaces and default gateway in command line
+# MAIN SCRIPT#
+#############
+
+#Checking for name of interfaces and default gateway from command line options
 
 while [ $# -gt 0 ]; do
     case "$1" in
     -h|--help )
-		help # call fuction help for user
+		userhelp # calling fuction help for user
 		exit 0
 		;;
     -r|--route )
+     if [ $? -ne 0 ]; then
         defaultr=1 # set route to a 1 if asked to display default route
+        shift
+        else
+        errormessage "Invalid Argument"
+        exit 2
+    fi
         ;;
     *)
-        interfaces+=("$1") # add unnamed parameters as interface names
+     if [ $? -eq 0 ]; then
+				interfaces+=("$1") # add unnamed parameters as interface names
+			else
+				errormessage "mentioned interface is not there" # calling errormessage fuction
+				exit 1
+			fi
+        
         ;;
     esac
     shift
@@ -72,7 +85,8 @@ if [ ${#interfaces[@]} -gt 0 ]; then # checking of particular interface
         if [ ${ipaddress[$interface]} ]; then # print only interface information
             echo "$interface : ${ipaddress[$interface]}"
         else # This is for wrong interface information
-            echo "$interface is not an interface on this host or has no ip address assigned"
+            errormessage "$interface is not an interface on this host or has no ip address assigned" # calling errormessage fuction
+            exit 2
         fi
     done
 else

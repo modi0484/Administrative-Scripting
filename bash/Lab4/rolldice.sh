@@ -5,7 +5,7 @@
 
 ###########################################################################################
 
-# mentioning the Variables
+# Variables Declaration
 #################################################
 
  # By deafult Variable $dicecount=2
@@ -20,26 +20,27 @@ total=0
 
 # create a fuction help for user for command help
 ##################################################
-function help () {
+userhelp () {
   echo "Usage: $0 [-c] [-s] [-h]"
-  
-  echo "Options: "
  
-  echo " -c option is for dicecount value, --dicecount "
-  echo " -s option is for dicesides value, --dicesides "
-  echo " -h option is for help, --help "
+  echo "Options: "
+    echo " -c option is for dicecount value, --dicecount [default is 2]"
+    echo " -s option is for dicesides value, --dicesides [default is 6]"
+    echo " -h option is for help, --help "
 }
 
 ###########################################################################################
 
-# Main script 
-##################################################
-# here is while loop for checking the dicecount, dicesides in commaand line and also dispay command help option
+
+# MAIN SCRIPT#
+#############
+
+# here is while loop for checking the dicecount, dicesides from commaand line option and also dispay command help option
 
 while [ $# -gt 0 ]; do
 	case "$1" in
 	-h|--help )
-		help # call fuction help for user
+		userhelp # call fuction help for user
 		exit 0
 		;;
     -c )
@@ -47,7 +48,7 @@ while [ $# -gt 0 ]; do
             dicecount=$2
             shift
         else
-            echo "Dear user,  Dice number should be between 1 to 5 !!!!"
+            userhelp "Dear user,  Dice number should be between 1 to 5 !!!!"
             exit 2
         fi
         ;;
@@ -57,11 +58,11 @@ while [ $# -gt 0 ]; do
                 dicesides=$2
                 shift
             else
-                echo "Dear user, Dice sides should be between 4 to 20 !!!!!"
+                userhelp "Dear user, Dice sides should be between 4 to 20 !!!!!"
                 exit 2
             fi
         fi
-       ;;
+        ;;
     esac
     shift
 done
@@ -86,7 +87,7 @@ fi
 
 if [ -z "$dicesides" ]; then
    
-    read -p "Please enter number of dice sides from 4 to 20. if you press enter then dcript will take default count 6:  " numberofsides
+    read -p "Please enter number of dice sides from 4 to 20. if you press enter then script will take default count 6:  " numberofsides
 
     # actual checking of user's input
     if [[ "$numberofsides" =~ ^[1-9][0-9]*$ ]]; then
