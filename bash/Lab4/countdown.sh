@@ -26,7 +26,7 @@ userhelp(){
 ######################################################
 errormessage(){
     echo "Usage: $0 [-i] [-h] [secs]"
-		echo "Argument '$1' not recognized" >&2
+		echo "Invalid Argument : $1" >&2
 }
 
 # Normally traps catch signals and do something useful or necessary with them
@@ -67,7 +67,7 @@ while [ $# -gt 0 ]; do
        ;;
        
      *)
-       errormessage "Invalid Argument $1"
+       errormessage "Argument not matched"
        exit 2
        
     esac

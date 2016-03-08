@@ -25,7 +25,7 @@ userhelp(){
 ######################################################
 errormessage(){
         echo "Usage: $0 [-c] [-h] [directory_name]"
-		echo "Argument '$1' not recognized" >&2
+		echo "Invalid Argument : $1" >&2
 }
 
 
@@ -52,11 +52,13 @@ while [ $# -gt 0 ]; do
        ;;
        
      *)
-       errormessage "Invalid Argument $1"
+       errormessage "Directory does not exist"
        exit 2
        
     esac
+    shift
 done
+
 
         
         
@@ -82,7 +84,7 @@ fi
 
 # checking the directory has 3 picture files or not
 ####################################################
-if [ $filecount -eq 3 ]; then 
+if [ $filecount -lt 3 ]; then 
             errormessage "you should have at least 3 picture files"
             exit 2
 else

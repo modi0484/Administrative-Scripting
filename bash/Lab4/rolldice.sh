@@ -35,7 +35,7 @@ userhelp () {
 ########### MAIN SCRIPT ##############
 ##############################################
 
-# here is while loop for checking the dicecount, dicesides from commaand line option and also dispay command help option
+# here is while loop for checking the dicecount, dicesides from commaand line arguments and also dispay command help option
 
 while [ $# -gt 0 ]; do
 	case "$1" in

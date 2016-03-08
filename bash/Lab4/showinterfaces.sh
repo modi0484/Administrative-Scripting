@@ -32,7 +32,7 @@ userhelp(){
 ######################################################
 errormessage(){
         echo "Usage: $0 [-r] [-h] [interface_name]"
-		echo "Argument '$1' not recognized" >&2
+		echo  "Invalid Argument : $1" >&2
 }
 
 
@@ -52,7 +52,7 @@ while [ $# -gt 0 ]; do
         defaultr=1 # set route to a 1 if asked to display default route
         shift
         else
-        errormessage "Invalid Argument"
+        errormessage "condition not matched"
         exit 2
     fi
         ;;
